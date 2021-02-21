@@ -1,0 +1,11 @@
+.button {
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: .6;
+}
+
+.button:active {
+  opacity: .3;
+}
