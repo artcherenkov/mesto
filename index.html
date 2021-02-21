@@ -1,11 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Mesto</title>
   </head>
-  <body>
-
+  <body class="root">
+    <header class="header root__header">
+      <a href="#" class="header__logo"></a>
+    </header>
+    <main class="main root__main">
+      <section class="profile main__profile">
+        <img class="profile__avatar" src="images/user-avatar.png" alt="Аватар пользователя">
+        <div class="profile__info">
+          <h1 class="profile__name">
+            Жак-Ив Кусто
+          </h1>
+          <button class="profile__edit-button"></button>
+          <p class="profile__about">
+            Исследователь океана
+          </p>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+      <section class="places main__places">
+        <ul class="places__list">
+          <li class="places__item place">
+            <img class="place__image" src="images/photo-dubai.jpg" alt="Дубай">
+            <div class="place__content">
+              <h2 class="place__title">
+                Дубай
+              </h2>
+              <button class="place__like-button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer root__footer">
+      <p class="footer__copyright">
+        © 2020 Mesto Russia
+      </p>
+    </footer>
   </body>
 </html>
