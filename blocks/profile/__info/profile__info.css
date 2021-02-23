@@ -1,8 +1,13 @@
 .profile__info {
   display: grid;
-  grid-template-columns: auto min-content;
+  grid-template-columns: fit-content(380px) min-content;
   grid-auto-rows: min-content;
   row-gap: 7px;
   column-gap: 10px;
-  max-width: 300px;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__avatar {
+    max-width: 300px;
+  }
 }
