@@ -1,7 +1,7 @@
 .header {
   max-width: 880px;
   padding: 45px 20px 41px;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey70);
   box-sizing: border-box;
 }
 
