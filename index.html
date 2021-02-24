@@ -17,12 +17,12 @@
           <h1 class="profile__name">
             Жак-Ив Кусто
           </h1>
-          <button class="profile__edit-button button"></button>
+          <button class="profile__edit-button button" type="button" aria-label="Изменить информацию о себе"></button>
           <p class="profile__about">
             Исследователь океана
           </p>
         </div>
-        <button class="profile__add-button button"></button>
+        <button class="profile__add-button button" type="button" aria-label="Добавить еще одно место"></button>
       </section>
       <section class="places main__places">
         <ul class="places__list">
@@ -32,7 +32,7 @@
               <h2 class="place__title">
                 Дубай
               </h2>
-              <button class="place__like-button place__like-button_active button button_action_like"></button>
+              <button class="place__like-button place__like-button_active button button_action_like" type="button" aria-label="Убрать лайк"></button>
             </div>
           </li>
           <li class="places__item place">
@@ -41,7 +41,7 @@
               <h2 class="place__title">
                 Black Rock City
               </h2>
-              <button class="place__like-button button button_action_like"></button>
+              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
             </div>
           </li>
           <li class="places__item place">
@@ -50,7 +50,7 @@
               <h2 class="place__title">
                 Лос-Анджелес
               </h2>
-              <button class="place__like-button button button_action_like"></button>
+              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
             </div>
           </li>
           <li class="places__item place">
@@ -59,7 +59,7 @@
               <h2 class="place__title">
                 Фарерские острова
               </h2>
-              <button class="place__like-button button button_action_like"></button>
+              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
             </div>
           </li>
           <li class="places__item place">
@@ -68,7 +68,7 @@
               <h2 class="place__title">
                 Москва
               </h2>
-              <button class="place__like-button button button_action_like"></button>
+              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
             </div>
           </li>
           <li class="places__item place">
@@ -77,14 +77,14 @@
               <h2 class="place__title">
                 Тенерифе
               </h2>
-              <button class="place__like-button button button_action_like"></button>
+              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
             </div>
           </li>
         </ul>
       </section>
       <div class="popup main__popup">
         <div class="popup__container">
-          <button class="popup__close-button button"></button>
+          <button class="popup__close-button button" type="button" aria-label="Закрыть редактирование профиля"></button>
           <h2 class="popup__title">
             Редактировать профиль
           </h2>
@@ -93,7 +93,7 @@
             <input class="popup__form-input" type="text" value="Жак-Ив Кусто" name="name" id="name">
             <label class="popup__form-label" for="description">О вас</label>
             <input class="popup__form-input" type="text" value="Исследователь океана" name="description" id="description">
-            <button class="popup__form-submit button button_action_save" type="submit">Сохранить</button>
+            <button class="popup__form-submit button button_action_save" type="submit" aria-label="Сохранить информацию о себе">Сохранить</button>
           </form>
         </div>
       </div>
