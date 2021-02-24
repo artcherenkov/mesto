@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="pages/index.css">
   </head>
   <body class="root">
@@ -82,13 +82,13 @@
           </li>
         </ul>
       </section>
-      <section class="popup main__popup">
+      <div class="popup main__popup">
         <div class="popup__container">
           <button class="popup__close-button button"></button>
           <h2 class="popup__title">
             Редактировать профиль
           </h2>
-          <form class="popup__form">
+          <form class="popup__form" name="user-info">
             <label class="popup__form-label" for="name">Ваше имя</label>
             <input class="popup__form-input" type="text" value="Жак-Ив Кусто" name="name" id="name">
             <label class="popup__form-label" for="description">О вас</label>
@@ -96,7 +96,7 @@
             <button class="popup__form-submit button button_action_save" type="submit">Сохранить</button>
           </form>
         </div>
-      </section>
+      </div>
     </main>
     <footer class="footer root__footer">
       <p class="footer__copyright">
