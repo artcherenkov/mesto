@@ -106,7 +106,7 @@
     const imageLink = imageLinkInput.value;
 
     const placeElement = createCardElement(title, imageLink);
-    placesListElement.append(placeElement);
+    placesListElement.prepend(placeElement);
 
     evt.target.reset();
     closePopup(popupElement);
