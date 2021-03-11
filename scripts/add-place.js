@@ -84,7 +84,7 @@
   function renderCard(container) {
     return function (card) {
       const cardElement = createCardElement(card.name, card.link);
-      container.append(cardElement);
+      container.prepend(cardElement);
     }
   }
   function renderCards() {
