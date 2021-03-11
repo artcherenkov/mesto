@@ -26,60 +26,6 @@
       </section>
       <section class="places main__places">
         <ul class="places__list">
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-dubai.jpg" alt="Дубай">
-            <div class="place__content">
-              <h2 class="place__title">
-                Дубай
-              </h2>
-              <button class="place__like-button place__like-button_active button button_action_like" type="button" aria-label="Убрать лайк"></button>
-            </div>
-          </li>
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-black-rock.jpg" alt="Black Rock City">
-            <div class="place__content">
-              <h2 class="place__title">
-                Black Rock City
-              </h2>
-              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-la.jpg" alt="Лос-Анджелес">
-            <div class="place__content">
-              <h2 class="place__title">
-                Лос-Анджелес
-              </h2>
-              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-faroe.jpg" alt="Фарерские острова">
-            <div class="place__content">
-              <h2 class="place__title">
-                Фарерские острова
-              </h2>
-              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-moscow.jpg" alt="Москва">
-            <div class="place__content">
-              <h2 class="place__title">
-                Москва
-              </h2>
-              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="places__item place">
-            <img class="place__image" src="images/photo-tenerife.jpg" alt="Тенерифе">
-            <div class="place__content">
-              <h2 class="place__title">
-                Тенерифе
-              </h2>
-              <button class="place__like-button button button_action_like" type="button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
         </ul>
       </section>
       <div class="popup popup_action_edit-profile main__popup">
@@ -105,12 +51,21 @@
           </h2>
           <form class="popup__form" name="add-place">
             <label class="popup__form-label" for="place-name">Название</label>
-            <input class="popup__form-input" type="text" name="name" id="place-name" placeholder="Название">
+            <input class="popup__form-input" type="text" name="place-name" id="place-name" placeholder="Название" required>
             <label class="popup__form-label" for="image-link">Ссылка на картинку</label>
-            <input class="popup__form-input" type="text" name="description" id="image-link" placeholder="Ссылка на картинку">
+            <input class="popup__form-input" type="text" name="image-link" id="image-link" placeholder="Ссылка на картинку" required>
             <button class="popup__form-submit button button_action_save" type="submit">Создать</button>
           </form>
         </div>
+      </div>
+      <div class="popup popup_type_fullscreen-image popup_action_add-place main__popup">
+        <figure class="popup__container popup__container_type_fullscreen-image">
+          <button class="popup__close-button button" type="button" aria-label="Закрыть добавление карточки"></button>
+          <img class="popup__image" src="https://images.unsplash.com/photo-1615301887608-7ca1192cd1d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Женщина">
+          <figcaption class="popup__image-caption">
+            Новое место
+          </figcaption>
+        </figure>
       </div>
     </main>
     <footer class="footer root__footer">
@@ -118,6 +73,21 @@
         © 2020 Mesto Russia
       </p>
     </footer>
+
+    <template id="place-card">
+      <li class="places__item place">
+        <button class="place__delete-button button"></button>
+        <img class="place__image" src="images/photo-dubai.jpg" alt="TITLE">
+        <div class="place__content">
+          <h2 class="place__title">
+             TITLE
+          </h2>
+          <button class="place__like-button button button_action_like" type="button" aria-label="Убрать лайк"></button>
+        </div>
+      </li>
+    </template>
     <script src="scripts/edit-profile.js"></script>
+    <script src="scripts/add-place.js"></script>
+    <script src="scripts/image-popup.js"></script>
   </body>
 </html>
