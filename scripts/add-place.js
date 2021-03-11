@@ -51,7 +51,7 @@
   const imagePopupImageElement = imagePopupElement.querySelector('.popup__image');
   const imagePopupImageCaptionElement = imagePopupElement.querySelector('.popup__image-caption');
 
-  const { onClosePopup, onOpenPopup } = window.popup;
+  const { closePopup, openPopup } = window.popup;
 
   function createCardElement(title, link) {
     const placeCardElement = placeCardTemplate
@@ -73,7 +73,7 @@
         imagePopupImageElement.alt = title;
         imagePopupImageCaptionElement.textContent = title;
 
-        onOpenPopup(imagePopupElement);
+        openPopup(imagePopupElement);
       }
     });
     placeLikeButton.addEventListener("click", () => placeLikeButton.classList.toggle('place__like-button_active'));
@@ -87,7 +87,6 @@
       container.append(cardElement);
     }
   }
-
   function renderCards() {
     const cardsToRenderFragment = document.createDocumentFragment();
 
@@ -110,11 +109,11 @@
     placesListElement.append(placeElement);
 
     evt.target.reset();
-    onClosePopup(popupElement);
+    closePopup(popupElement);
   }
 
-  closePopupButton.addEventListener("click", onClosePopup.bind(null, popupElement));
-  addPlaceButton.addEventListener("click", onOpenPopup.bind(null, popupElement));
+  closePopupButton.addEventListener("click", () => closePopup(popupElement));
+  addPlaceButton.addEventListener("click", () => openPopup(popupElement));
   popupFormElement.addEventListener("submit", handleFormSubmit);
 
   renderCards();

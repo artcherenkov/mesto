@@ -14,33 +14,31 @@
   const profileName = profile.querySelector(".profile__name");
   const profileDescription = profile.querySelector(".profile__about");
 
-  function onEditBtnClick() {
+  function handleEditBtnClick() {
     nameInput.value = profileName.textContent.trim();
     descriptionInput.value = profileDescription.textContent.trim();
-    onOpenPopup(popup);
+    openPopup(popup);
   }
-
-  function onPopupFormSubmit(evt) {
+  function handlePopupFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
-    onClosePopup(popup);
+    closePopup(popup);
   }
 
-  function onClosePopup(popup) {
+  function closePopup(popup) {
     popup.classList.remove("popup_opened");
   }
-
-  function onOpenPopup(popup) {
+  function openPopup(popup) {
     popup.classList.add("popup_opened");
   }
 
-  editButton.addEventListener("click", onEditBtnClick);
-  closePopupButton.addEventListener("click", onClosePopup.bind(null, popup));
-  popupForm.addEventListener("submit", onPopupFormSubmit);
+  editButton.addEventListener("click", handleEditBtnClick);
+  closePopupButton.addEventListener("click", () => closePopup(popup));
+  popupForm.addEventListener("submit", handlePopupFormSubmit);
 
   window.popup = {
-    onClosePopup,
-    onOpenPopup,
+    closePopup,
+    openPopup
   };
 })();
