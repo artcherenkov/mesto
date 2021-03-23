@@ -35,10 +35,34 @@
             Редактировать профиль
           </h2>
           <form class="popup__form" name="user-info">
-            <label class="popup__form-label" for="name">Ваше имя</label>
-            <input class="popup__form-input" type="text" value="Жак-Ив Кусто" name="name" id="name">
-            <label class="popup__form-label" for="description">О вас</label>
-            <input class="popup__form-input" type="text" value="Исследователь океана" name="description" id="description">
+            <div class="popup__input-container">
+              <label class="popup__form-label" for="name">Ваше имя</label>
+              <input
+                class="popup__form-input"
+                type="text"
+                value="Жак-Ив Кусто"
+                name="name"
+                id="name"
+                required
+                minlength="2"
+                maxlength="40"
+              >
+              <span class="popup__error name-error"></span>
+            </div>
+            <div class="popup__input-container">
+              <label class="popup__form-label" for="description">О вас</label>
+              <input
+                class="popup__form-input"
+                type="text"
+                value="Исследователь океана"
+                name="description"
+                id="description"
+                required
+                minlength="2"
+                maxlength="200"
+              >
+              <span class="popup__error description-error"></span>
+            </div>
             <button class="popup__form-submit button button_action_save" type="submit">Сохранить</button>
           </form>
         </div>
@@ -50,10 +74,32 @@
             Новое место
           </h2>
           <form class="popup__form" name="add-place">
-            <label class="popup__form-label" for="place-name">Название</label>
-            <input class="popup__form-input" type="text" name="place-name" id="place-name" placeholder="Название" required>
-            <label class="popup__form-label" for="image-link">Ссылка на картинку</label>
-            <input class="popup__form-input" type="text" name="image-link" id="image-link" placeholder="Ссылка на картинку" required>
+            <div class="popup__input-container">
+              <label class="popup__form-label" for="place-name">Название</label>
+              <input
+                class="popup__form-input"
+                type="text"
+                name="place-name"
+                id="place-name"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required
+              >
+              <span class="popup__error place-name-error"></span>
+            </div>
+            <div class="popup__input-container">
+              <label class="popup__form-label" for="image-link">Ссылка на картинку</label>
+              <input
+                class="popup__form-input"
+                type="url"
+                name="image-link"
+                id="image-link"
+                placeholder="Ссылка на картинку"
+                required
+              >
+              <span class="popup__error image-link-error"></span>
+            </div>
             <button class="popup__form-submit button button_action_save" type="submit">Создать</button>
           </form>
         </div>
@@ -80,12 +126,13 @@
         <img class="place__image" src="images/photo-dubai.jpg" alt="TITLE">
         <div class="place__content">
           <h2 class="place__title">
-             TITLE
+            TITLE
           </h2>
           <button class="place__like-button button button_action_like" type="button" aria-label="Убрать лайк"></button>
         </div>
       </li>
     </template>
+    <script src="scripts/validate.js"></script>
     <script src="scripts/edit-profile.js"></script>
     <script src="scripts/add-place.js"></script>
     <script src="scripts/image-popup.js"></script>
