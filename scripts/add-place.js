@@ -85,8 +85,9 @@
     return function (card) {
       const cardElement = createCardElement(card.name, card.link);
       container.prepend(cardElement);
-    }
+    };
   }
+
   function renderCards() {
     const cardsToRenderFragment = document.createDocumentFragment();
 
@@ -96,9 +97,10 @@
   }
 
   function handleCardDeletion(evt) {
-    const cardToDeleteElement = evt.target.closest('.place');
+    const cardToDeleteElement = evt.target.closest(".place");
     cardToDeleteElement.remove();
   }
+
   function handleFormSubmit(evt) {
     evt.preventDefault();
 
@@ -112,10 +114,7 @@
     closePopup(popupElement);
   }
 
-  closePopupButton.addEventListener("click", () => {
-    window.resetForm(popupFormElement);
-    closePopup(popupElement);
-  });
+  closePopupButton.addEventListener("click", () => closePopup(popupElement));
   addPlaceButton.addEventListener("click", () => openPopup(popupElement));
   popupFormElement.addEventListener("submit", handleFormSubmit);
 

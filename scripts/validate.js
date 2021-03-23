@@ -88,7 +88,9 @@
 
     formElement.reset();
     const inputsList = Array.from(formElement.querySelectorAll(selectors.inputSelector));
+    const buttonElement = formElement.querySelector(selectors.submitButtonSelector);
     inputsList.forEach((inputElement) => hideInputError(formElement, inputElement));
+    toggleButtonState(inputsList, buttonElement);
   }
 
   window.enableValidation = enableValidation;
