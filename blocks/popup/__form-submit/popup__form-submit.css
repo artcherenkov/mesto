@@ -1,8 +1,8 @@
 .popup__form-submit {
   margin-top: 48px;
   width: 100%;
-  border: none;
   border-radius: 2px;
+  border: 2px solid black;
   padding: 14px 0;
   background-color: black;
   font-family: var(--font-inter);
