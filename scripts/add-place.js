@@ -112,7 +112,10 @@
     closePopup(popupElement);
   }
 
-  closePopupButton.addEventListener("click", () => closePopup(popupElement));
+  closePopupButton.addEventListener("click", () => {
+    window.resetForm(popupFormElement);
+    closePopup(popupElement);
+  });
   addPlaceButton.addEventListener("click", () => openPopup(popupElement));
   popupFormElement.addEventListener("submit", handleFormSubmit);
 

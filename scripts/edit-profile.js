@@ -34,7 +34,10 @@
   }
 
   editButton.addEventListener("click", handleEditBtnClick);
-  closePopupButton.addEventListener("click", () => closePopup(popup));
+  closePopupButton.addEventListener("click", () => {
+    window.resetForm(popupForm);
+    closePopup(popup);
+  });
   popupForm.addEventListener("submit", handlePopupFormSubmit);
 
   window.popup = {
