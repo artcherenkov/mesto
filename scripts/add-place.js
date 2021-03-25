@@ -116,7 +116,6 @@
 
   closePopupButton.addEventListener("click", () => closePopup(popupElement));
   addPlaceButton.addEventListener("click", () => {
-    const popupFormElement = popupElement.querySelector('.popup__form');
     window.resetForm(popupFormElement);
     openPopup(popupElement);
   });

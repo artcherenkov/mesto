@@ -3,7 +3,7 @@
 (function () {
   const popupElement = document.querySelector(".popup_action_edit-profile");
   const closePopupButton = popupElement.querySelector(".popup__close-button");
-  const popupForm = popupElement.querySelector(".popup__form");
+  const popupFormElement = popupElement.querySelector(".popup__form");
   const nameInput = popupElement.querySelector(".popup__form-input[name = name]");
   const descriptionInput = popupElement.querySelector(".popup__form-input[name = description]");
 
@@ -13,7 +13,6 @@
   const profileDescription = profile.querySelector(".profile__about");
 
   function handleEditBtnClick() {
-    const popupFormElement = popupElement.querySelector('.popup__form');
     window.resetForm(popupFormElement);
 
     nameInput.value = profileName.textContent.trim();
@@ -30,5 +29,5 @@
 
   editButton.addEventListener("click", handleEditBtnClick);
   closePopupButton.addEventListener("click", () => window.popup.closePopup(popupElement));
-  popupForm.addEventListener("submit", handlePopupFormSubmit);
+  popupFormElement.addEventListener("submit", handlePopupFormSubmit);
 })();
