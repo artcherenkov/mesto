@@ -1,19 +1,12 @@
 "use strict";
 
 (function () {
-  const POPUP_SELECTOR = ".popup";
   const OPENED_POPUP_CLASS = "popup_opened";
-  const POPUP_FORM_SELECTOR = ".popup__form";
-
-  const popupsList = Array.from(document.querySelectorAll(POPUP_SELECTOR));
 
   function handleEscKeyPress(evt) {
     if (evt.key === "Escape") {
-      popupsList.forEach((popupElement) => {
-        const popupFormElement = popupElement.querySelector(POPUP_FORM_SELECTOR);
-        popupFormElement && window.resetForm(popupFormElement);
-        closePopup(popupElement);
-      });
+      const openedPopup = document.querySelector('.popup_opened');
+      closePopup(openedPopup);
     }
   }
 
@@ -39,10 +32,6 @@
   }
 
   function removeCloseHandlers(popupElement) {
-    const popupFormElement = popupElement.querySelector(POPUP_FORM_SELECTOR);
-    if (popupFormElement) {
-      window.resetForm(popupElement.querySelector(POPUP_FORM_SELECTOR));
-    }
     document.removeEventListener("keydown", handleEscKeyPress);
     popupElement.removeEventListener("click", handleOutsideClick);
   }
