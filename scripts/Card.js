@@ -7,14 +7,13 @@ export default class Card {
     this._templateSelector = templateSelector;
 
     this._element = null;
+    this._deleteBtn = null;
+    this._likeBtn = null;
   }
 
   _setEventListeners() {
-    const placeDeleteButton = this._element.querySelector(".place__delete-button");
-    const placeLikeButton = this._element.querySelector(".place__like-button");
-
-    placeDeleteButton.addEventListener("click", () => this._onCardDeletion());
-    placeLikeButton.addEventListener("click", () => this._onLikeClick());
+    this._deleteBtn.addEventListener("click", () => this._onCardDeletion());
+    this._likeBtn.addEventListener("click", () => this._onLikeClick());
     this._element.addEventListener("click", (evt) => this._onCardClick(evt))
   }
 
@@ -23,20 +22,15 @@ export default class Card {
   }
 
   _onLikeClick() {
-    this._element
-      .querySelector(".place__like-button")
-      .classList.toggle("place__like-button_active");
+    this._likeBtn.classList.toggle("place__like-button_active");
   }
 
   _onCardClick(evt) {
-    const placeDeleteButton = this._element.querySelector(".place__delete-button");
-    const placeLikeButton = this._element.querySelector(".place__like-button");
-
     const imagePopupElement = document.querySelector(".popup_type_fullscreen-image");
     const imagePopupImageElement = imagePopupElement.querySelector(".popup__image");
     const imagePopupImageCaptionElement = imagePopupElement.querySelector(".popup__image-caption");
 
-    if (evt.target !== placeLikeButton && evt.target !== placeDeleteButton) {
+    if (evt.target !== this._deleteBtn && evt.target !== this._likeBtn) {
       imagePopupImageElement.src = this._imageUrl;
       imagePopupImageElement.alt = this._title;
       imagePopupImageCaptionElement.textContent = this._title;
@@ -54,6 +48,8 @@ export default class Card {
 
   createCard() {
     this._element = this._getTemplate();
+    this._deleteBtn = this._element.querySelector(".place__delete-button");
+    this._likeBtn = this._element.querySelector(".place__like-button");
     this._setEventListeners();
 
     const imageElement = this._element.querySelector(".place__image");
