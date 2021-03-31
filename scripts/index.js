@@ -1,5 +1,6 @@
 import { INITIAL_CARDS } from "./data.js";
 import Card from "./Card.js";
+import { onCardClick } from "./image-popup.js";
 const OPENED_POPUP_CLASS = "popup_opened";
 
 const cardTemplateSelector = "#place-card";
@@ -38,10 +39,14 @@ export const openPopup = (popupElement) => {
   setCloseHandlers(popupElement);
 }
 
+export const createCard = (data) => {
+  const card = new Card(data, cardTemplateSelector, onCardClick);
+  return card.createCard();
+}
+
 const renderCards = (cardsList) => {
-  cardsList.forEach((c) => {
-    const card = new Card(c, cardTemplateSelector);
-    const cardElement = card.createCard();
+  cardsList.forEach((card) => {
+    const cardElement = createCard(card);
     placesListElement.prepend(cardElement);
   });
 };

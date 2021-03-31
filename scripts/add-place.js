@@ -1,5 +1,4 @@
-import { closePopup, openPopup } from './index.js';
-import Card from "./Card.js";
+import { closePopup, createCard, openPopup } from "./index.js";
 import FormValidator from "./FormValidator.js";
 import { VALIDATION_CONFIG } from "./const.js";
 
@@ -14,7 +13,7 @@ const addPlaceButton = profileElement.querySelector(".profile__add-button");
 
 const placesListElement = document.querySelector(".places__list");
 
-const formValidator = new FormValidator(VALIDATION_CONFIG, popupFormElement)
+const formValidator = new FormValidator(VALIDATION_CONFIG, popupFormElement);
 formValidator.enableValidation();
 
 function handleFormSubmit(evt) {
@@ -23,9 +22,8 @@ function handleFormSubmit(evt) {
   const title = placeNameInput.value;
   const imageUrl = imageLinkInput.value;
 
-  const card = new Card({title, imageUrl}, '#place-card');
-  const placeElement = card.createCard();
-  placesListElement.prepend(placeElement);
+  const cardElement = createCard({ title, imageUrl });
+  placesListElement.prepend(cardElement);
 
   evt.target.reset();
   closePopup(popupElement);
