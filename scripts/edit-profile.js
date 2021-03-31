@@ -1,4 +1,6 @@
 import { closePopup, openPopup } from "./index.js";
+import FormValidator from "./FormValidator.js";
+import { VALIDATION_CONFIG } from "./const.js";
 
 const popupElement = document.querySelector(".popup_action_edit-profile");
 const closePopupButton = popupElement.querySelector(".popup__close-button");
@@ -11,8 +13,11 @@ const editButton = profile.querySelector(".profile__edit-button");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__about");
 
+const formValidator = new FormValidator(VALIDATION_CONFIG)
+formValidator.enableValidation();
+
 function handleEditBtnClick() {
-  window.resetForm(popupFormElement);
+  formValidator.resetValidationErrors(popupFormElement);
 
   nameInput.value = profileName.textContent.trim();
   descriptionInput.value = profileDescription.textContent.trim();

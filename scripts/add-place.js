@@ -1,5 +1,7 @@
 import { closePopup, openPopup } from './index.js';
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { VALIDATION_CONFIG } from "./const.js";
 
 const popupElement = document.querySelector(".popup_action_add-place");
 const closePopupButton = popupElement.querySelector(".popup__close-button");
@@ -11,6 +13,9 @@ const profileElement = document.querySelector(".profile");
 const addPlaceButton = profileElement.querySelector(".profile__add-button");
 
 const placesListElement = document.querySelector(".places__list");
+
+const formValidator = new FormValidator(VALIDATION_CONFIG)
+formValidator.enableValidation();
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -28,7 +33,7 @@ function handleFormSubmit(evt) {
 
 closePopupButton.addEventListener("click", () => closePopup(popupElement));
 addPlaceButton.addEventListener("click", () => {
-  window.resetForm(popupFormElement);
+  formValidator.resetValidationErrors(popupFormElement);
   openPopup(popupElement);
 });
 popupFormElement.addEventListener("submit", handleFormSubmit);
