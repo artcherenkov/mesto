@@ -1,10 +1,6 @@
-"use strict";
+import { closePopup } from "./index.js";
 
-(function () {
-  const popupElement = document.querySelector(".popup_type_fullscreen-image");
-  const closePopupButton = popupElement.querySelector(".popup__close-button");
+const popupElement = document.querySelector(".popup_type_fullscreen-image");
+const closePopupButton = popupElement.querySelector(".popup__close-button");
 
-  const { closePopup } = window.popup;
-
-  closePopupButton.addEventListener("click", () => closePopup(popupElement));
-})();
+closePopupButton.addEventListener("click", () => closePopup(popupElement));
