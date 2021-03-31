@@ -1,6 +1,5 @@
 import { INITIAL_CARDS } from "./data.js";
 import Card from "./Card.js";
-import { onCardClick } from "./image-popup.js";
 const OPENED_POPUP_CLASS = "popup_opened";
 
 const cardTemplateSelector = "#place-card";
@@ -39,8 +38,20 @@ export const openPopup = (popupElement) => {
   setCloseHandlers(popupElement);
 }
 
+export const handleCardClick = (title, imageUrl) => {
+  const imagePopupElement = document.querySelector(".popup_type_fullscreen-image");
+  const imagePopupImageElement = imagePopupElement.querySelector(".popup__image");
+  const imagePopupImageCaptionElement = imagePopupElement.querySelector(".popup__image-caption");
+
+  imagePopupImageElement.src = imageUrl;
+  imagePopupImageElement.alt = title;
+  imagePopupImageCaptionElement.textContent = title;
+
+  openPopup(imagePopupElement);
+}
+
 export const createCard = (data) => {
-  const card = new Card(data, cardTemplateSelector, onCardClick);
+  const card = new Card(data, cardTemplateSelector, handleCardClick);
   return card.createCard();
 }
 

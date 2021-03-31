@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, templateSelector, onCardClick) {
+  constructor(data, templateSelector, handleCardClick) {
     const { title, imageUrl } = data;
     this._title = title;
     this._imageUrl = imageUrl;
@@ -8,16 +8,16 @@ export default class Card {
     this._element = null;
     this._deleteBtn = null;
     this._likeBtn = null;
+    this._cardImage = null;
 
-    this._onCardClick = onCardClick;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
-    const imageElement = this._element.querySelector(".place__image");
     this._deleteBtn.addEventListener("click", () => this._onCardDeletion());
     this._likeBtn.addEventListener("click", () => this._onLikeClick());
-    imageElement.addEventListener("click", () =>
-      this._onCardClick(this._title, this._imageUrl)
+    this._cardImage.addEventListener("click", () =>
+      this._handleCardClick(this._title, this._imageUrl)
     );
   }
 
@@ -40,6 +40,8 @@ export default class Card {
     this._element = this._getTemplate();
     this._deleteBtn = this._element.querySelector(".place__delete-button");
     this._likeBtn = this._element.querySelector(".place__like-button");
+    this._cardImage = this._element.querySelector(".place__image");
+
     this._setEventListeners();
 
     const imageElement = this._element.querySelector(".place__image");
