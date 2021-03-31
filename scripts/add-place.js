@@ -14,7 +14,7 @@ const addPlaceButton = profileElement.querySelector(".profile__add-button");
 
 const placesListElement = document.querySelector(".places__list");
 
-const formValidator = new FormValidator(VALIDATION_CONFIG)
+const formValidator = new FormValidator(VALIDATION_CONFIG, popupFormElement)
 formValidator.enableValidation();
 
 function handleFormSubmit(evt) {
@@ -33,7 +33,7 @@ function handleFormSubmit(evt) {
 
 closePopupButton.addEventListener("click", () => closePopup(popupElement));
 addPlaceButton.addEventListener("click", () => {
-  formValidator.resetValidationErrors(popupFormElement);
+  formValidator.resetValidationErrors();
   openPopup(popupElement);
 });
 popupFormElement.addEventListener("submit", handleFormSubmit);

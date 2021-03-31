@@ -13,11 +13,11 @@ const editButton = profile.querySelector(".profile__edit-button");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__about");
 
-const formValidator = new FormValidator(VALIDATION_CONFIG)
+const formValidator = new FormValidator(VALIDATION_CONFIG, popupFormElement)
 formValidator.enableValidation();
 
 function handleEditBtnClick() {
-  formValidator.resetValidationErrors(popupFormElement);
+  formValidator.resetValidationErrors();
 
   nameInput.value = profileName.textContent.trim();
   descriptionInput.value = profileDescription.textContent.trim();
