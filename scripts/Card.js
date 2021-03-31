@@ -1,7 +1,8 @@
 import { openPopup } from "./index.js";
 
 export default class Card {
-  constructor({ title, imageUrl }, templateSelector) {
+  constructor(data, templateSelector) {
+    const { title, imageUrl } = data;
     this._title = title;
     this._imageUrl = imageUrl;
     this._templateSelector = templateSelector;
