@@ -68,9 +68,7 @@ export default class FormValidator {
 
   resetValidationErrors() {
     this._formElement.reset();
-    const inputsList = Array.from(this._formElement.querySelectorAll(this._selectors.inputSelector));
-    const buttonElement = this._formElement.querySelector(this._selectors.submitButtonSelector);
-    inputsList.forEach((inputElement) => this._hideInputError(inputElement));
-    this._toggleButtonState(inputsList, buttonElement);
+    this._inputsList.forEach((inputElement) => this._hideInputError(inputElement));
+    this._toggleButtonState(this._inputsList, this._buttonElement);
   }
 }
