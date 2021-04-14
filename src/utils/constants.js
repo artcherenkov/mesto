@@ -43,28 +43,10 @@ export const INITIAL_CARDS = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
   },
   {
-    id: 2,
-    title: "Челябинская область",
-    imageUrl:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    id: 3,
-    title: "Иваново",
-    imageUrl:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
     id: 4,
     title: "Камчатка",
     imageUrl:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    id: 5,
-    title: "Холмогорский район",
-    imageUrl:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
   },
   {
     id: 6,
@@ -72,4 +54,41 @@ export const INITIAL_CARDS = [
     imageUrl:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
+  {
+    id: 7,
+    title: "Black Rock City",
+    imageUrl: blackRockImage,
+  },
+  {
+    id: 8,
+    title: "Дубай",
+    imageUrl: dubaiImage,
+  },
+  {
+    id: 9,
+    title: "Фарерские острова",
+    imageUrl: faroeImage,
+  },
+  {
+    id: 10,
+    title: "Лос-Анджелес",
+    imageUrl: laImage,
+  },
+  {
+    id: 11,
+    title: "Москва",
+    imageUrl: moscowImage,
+  },
+  {
+    id: 12,
+    title: "Тенерифе",
+    imageUrl: tenerifeImage,
+  },
 ];
+
+import blackRockImage from "../images/photo-black-rock.jpg";
+import dubaiImage from "../images/photo-dubai.jpg";
+import faroeImage from "../images/photo-faroe.jpg";
+import laImage from "../images/photo-la.jpg";
+import moscowImage from "../images/photo-moscow.jpg";
+import tenerifeImage from "../images/photo-tenerife.jpg";
