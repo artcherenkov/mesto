@@ -62,7 +62,7 @@ editProfilePopup.setEventListeners();
 // Инициализация попапа добавления места
 const onAddPlaceFormSubmit = (formData) => {
   const cardElement = createCard(formData);
-  placesList.addItem(cardElement);
+  placesList.addItem(cardElement, "prepend");
 };
 const onAddPlaceFormReset = () => {
   addPlaceValidator.resetValidationErrors();
@@ -82,7 +82,7 @@ const createCard = (data) => {
 };
 const cardRenderer = (item) => {
   const cardElement = createCard(item);
-  placesList.addItem(cardElement);
+  placesList.addItem(cardElement, "prepend");
 };
 const placesList = new Section(
   {
