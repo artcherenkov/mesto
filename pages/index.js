@@ -1,5 +1,5 @@
-import { INITIAL_CARDS } from "./data.js";
-import Card from "./Card.js";
+import { INITIAL_CARDS } from "../scripts/data.js";
+import Card from "../components/Card.js";
 const OPENED_POPUP_CLASS = "popup_opened";
 
 const cardTemplateSelector = "#place-card";

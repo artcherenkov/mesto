@@ -1,5 +1,5 @@
-import { closePopup, createCard, openPopup } from "./index.js";
-import FormValidator from "./FormValidator.js";
+import { closePopup, createCard, openPopup } from "../pages";
+import FormValidator from "../components/FormValidator.js";
 import { VALIDATION_CONFIG } from "./const.js";
 
 const popupElement = document.querySelector(".popup_action_add-place");
