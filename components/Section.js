@@ -6,9 +6,16 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems() {}
+  renderItems() {
+    this._clear();
+    this._itemsToRender.forEach((item) => this._renderer(item));
+  }
 
-  addItem(element) {}
+  addItem(element) {
+    this._container.append(element);
+  }
 
-  _clear() {}
+  _clear() {
+    this._container.innerHTML = "";
+  }
 }
