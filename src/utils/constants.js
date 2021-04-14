@@ -1,3 +1,10 @@
+import blackRockImage from "../images/photo-black-rock.jpg";
+import dubaiImage from "../images/photo-dubai.jpg";
+import faroeImage from "../images/photo-faroe.jpg";
+import laImage from "../images/photo-la.jpg";
+import moscowImage from "../images/photo-moscow.jpg";
+import tenerifeImage from "../images/photo-tenerife.jpg";
+
 export const imagePopupSelector = ".popup_type_fullscreen-image";
 export const editProfilePopupSelector = ".popup_action_edit-profile";
 export const addPlacePopupSelector = ".popup_action_add-place";
@@ -85,10 +92,3 @@ export const INITIAL_CARDS = [
     imageUrl: tenerifeImage,
   },
 ];
-
-import blackRockImage from "../images/photo-black-rock.jpg";
-import dubaiImage from "../images/photo-dubai.jpg";
-import faroeImage from "../images/photo-faroe.jpg";
-import laImage from "../images/photo-la.jpg";
-import moscowImage from "../images/photo-moscow.jpg";
-import tenerifeImage from "../images/photo-tenerife.jpg";
