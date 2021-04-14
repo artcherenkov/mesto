@@ -25,3 +25,51 @@ export const editProfileButtonElement = profileElement.querySelector(
 export const addPlaceButtonElement = profileElement.querySelector(
   ".profile__add-button"
 );
+
+export const VALIDATION_CONFIG = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-input",
+  submitButtonSelector: ".popup__form-submit",
+  inactiveButtonClass: "popup__form-submit_disabled",
+  inputErrorClass: "popup__form-input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+export const INITIAL_CARDS = [
+  {
+    id: 1,
+    title: "Архыз",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    id: 2,
+    title: "Челябинская область",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    id: 3,
+    title: "Иваново",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    id: 4,
+    title: "Камчатка",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    id: 5,
+    title: "Холмогорский район",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    id: 6,
+    title: "Байкал",
+    imageUrl:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
