@@ -75,30 +75,30 @@
           </h2>
           <form class="popup__form" name="add-place">
             <div class="popup__input-container">
-              <label class="popup__form-label" for="place-name">Название</label>
+              <label class="popup__form-label" for="title">Название</label>
               <input
                 class="popup__form-input"
                 type="text"
-                name="place-name"
-                id="place-name"
+                name="title"
+                id="title"
                 placeholder="Название"
                 minlength="2"
                 maxlength="30"
                 required
               >
-              <span class="popup__error place-name-error"></span>
+              <span class="popup__error title-error"></span>
             </div>
             <div class="popup__input-container">
-              <label class="popup__form-label" for="image-link">Ссылка на картинку</label>
+              <label class="popup__form-label" for="imageUrl">Ссылка на картинку</label>
               <input
                 class="popup__form-input"
                 type="url"
-                name="image-link"
-                id="image-link"
+                name="imageUrl"
+                id="imageUrl"
                 placeholder="Ссылка на картинку"
                 required
               >
-              <span class="popup__error image-link-error"></span>
+              <span class="popup__error imageUrl-error"></span>
             </div>
             <button class="popup__form-submit button button_action_save" type="submit">Создать</button>
           </form>
@@ -132,11 +132,6 @@
         </div>
       </li>
     </template>
-    <script type="module" src="pages/index.js"></script>
-    <script type="module" src="components/Card.js"></script>
-    <script type="module" src="components/FormValidator.js"></script>
-    <script type="module" src="scripts/edit-profile.js"></script>
-    <script type="module" src="scripts/add-place.js"></script>
-    <script type="module" src="scripts/image-popup.js"></script>
+    <script type="module" src="pages/_index.js"></script>
   </body>
 </html>
