@@ -5,10 +5,14 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    // возвращает объект с данными пользователя
+    return {
+      name: this._nameElement.textContent.trim(),
+      info: this._infoElement.textContent.trim(),
+    };
   }
 
-  setUserInfo() {
-    // принимает новые данные пользователя и добавляет их на страницу
+  setUserInfo({ name, info }) {
+    this._nameElement.textContent = name;
+    this._infoElement.textContent = info;
   }
 }
