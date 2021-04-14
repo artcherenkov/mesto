@@ -21,6 +21,8 @@ import {
   profileNameSelector,
 } from "../utils/constants.js";
 
+import "./index.css";
+
 // Инициализация валидаторов
 const editProfileValidator = new FormValidator(
   VALIDATION_CONFIG,

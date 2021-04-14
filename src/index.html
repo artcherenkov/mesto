@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css">
   </head>
   <body class="root">
     <header class="header root__header">
@@ -12,7 +11,7 @@
     </header>
     <main class="main root__main">
       <section class="profile main__profile">
-        <img class="profile__avatar" src="images/user-avatar.png" alt="Аватар пользователя">
+        <img class="profile__avatar" src="<%=require('./images/user-avatar.png')%>" alt="Аватар пользователя">
         <div class="profile__info">
           <h1 class="profile__name">
             Жак-Ив Кусто
@@ -132,6 +131,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="pages/index.js"></script>
   </body>
 </html>
