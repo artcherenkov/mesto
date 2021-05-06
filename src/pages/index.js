@@ -47,10 +47,6 @@ const addPlaceValidator = new FormValidator(
 );
 editProfileValidator.enableValidation();
 addPlaceValidator.enableValidation();
-//
-// const setLoading = (popup, isLoading) => {
-//   popup.setLoading();
-// };
 
 // Инициализация информации о пользователе
 let userInfo;
@@ -72,7 +68,15 @@ submitPopup.setEventListeners();
 
 // Инициализация попапа редактирования профиля
 const onEditProfileFormSubmit = (formData) => {
-  userInfo.setUserInfo(formData);
+  editProfilePopup.setLoading(true);
+  api
+    .editUserInfo(Adapter.adaptUserInfoToServer(formData))
+    .then((info) => {
+      userInfo.setUserInfo(Adapter.adaptUserInfoToClient(info));
+      editProfilePopup.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => editProfilePopup.setLoading(false));
 };
 const onEditProfileFormReset = () => {
   editProfileValidator.resetValidationErrors();

@@ -15,6 +15,20 @@ export default class Api {
     });
   }
 
+  editUserInfo(newUserInfo) {
+    return fetch(`${this._options.baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._options.headers,
+      body: JSON.stringify(newUserInfo),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: this._options.headers,
@@ -80,11 +94,3 @@ export default class Api {
     });
   }
 }
-
-// const api = new Api({
-//   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
-//   headers: {
-//     authorization: '5a89c943-0743-4e83-b516-7727da7c758b',
-//     'Content-Type': 'application/json'
-//   }
-// });

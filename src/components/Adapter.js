@@ -28,4 +28,11 @@ export default class Adapter {
 
     return clientUserInfo;
   }
+
+  static adaptUserInfoToServer(clientUserInfo) {
+    return {
+      name: clientUserInfo.name,
+      about: clientUserInfo.info,
+    };
+  }
 }
