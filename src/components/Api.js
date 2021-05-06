@@ -14,6 +14,19 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
+
+  setLike(cardId) {
+    return fetch(`${this._options.baseUrl}/cards/likes/${cardId}`, {
+      method: "put",
+      headers: this._options.headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
 }
 
 // const api = new Api({

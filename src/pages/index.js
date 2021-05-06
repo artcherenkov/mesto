@@ -94,7 +94,9 @@ const createCard = (data) => {
       data,
       handleCardClick: onCardClick(data),
       handleLikeClick: () => {
-        console.log("like clicked");
+        api
+          .setLike(data._id)
+          .then((data) => card.toggleLike(data.likes.length));
       },
       handleDeleteClick: () => {
         console.log("delete clicked");
