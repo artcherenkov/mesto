@@ -92,16 +92,24 @@ addPlacePopup.setEventListeners();
 // Инициализация списка карточек
 let placesList;
 const onCardClick = (data) => () => imagePopup.open(data);
+const onLikeClick = (data) => {
+  return function (isLiked) {
+    if (!isLiked) {
+      api.setLike(data._id).then((data) => this.setLike(data.likes));
+    } else {
+      api.deleteLike(data._id).then((data) => this.deleteLike(data.likes));
+    }
+  };
+};
 const createCard = (data) => {
   const card = new Card(
     {
       data,
+      isLiked: data.likes.some(
+        (like) => like._id === userInfo.getUserInfo().id
+      ),
       handleCardClick: onCardClick(data),
-      handleLikeClick: () => {
-        api
-          .setLike(data._id)
-          .then((data) => card.toggleLike(data.likes.length));
-      },
+      handleLikeClick: onLikeClick(data),
       handleDeleteClick: () => {
         console.log("delete clicked");
       },

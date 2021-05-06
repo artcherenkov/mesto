@@ -1,12 +1,14 @@
 export default class Card {
   constructor(
-    { data, handleCardClick, handleDeleteClick, handleLikeClick },
+    { data, isLiked, handleCardClick, handleDeleteClick, handleLikeClick },
     templateSelector
   ) {
     const { title, imageUrl, likes } = data;
     this._title = title;
     this._imageUrl = imageUrl;
     this._likes = likes;
+    this._isLiked = isLiked;
+
     this._templateSelector = templateSelector;
 
     this._element = null;
@@ -25,7 +27,7 @@ export default class Card {
       this._onCardDeletion();
     });
     this._likeBtn.addEventListener("click", () => {
-      this._handleLikeClick();
+      this._handleLikeClick(this._isLiked);
     });
     this._cardImage.addEventListener("click", () =>
       this._handleCardClick(this._title, this._imageUrl)
@@ -36,9 +38,18 @@ export default class Card {
     this._element.remove();
   }
 
-  toggleLike(likesCount) {
-    this._likeBtn.classList.toggle("place__like-button_active");
-    this._likeCounter.textContent = likesCount;
+  setLike(newLikes = this._likes) {
+    this._isLiked = true;
+    this._likes = newLikes;
+    this._likeBtn.classList.add("place__like-button_active");
+    this._likeCounter.textContent = newLikes.length;
+  }
+
+  deleteLike(newLikes) {
+    this._isLiked = false;
+    this._likes = newLikes;
+    this._likeBtn.classList.remove("place__like-button_active");
+    this._likeCounter.textContent = newLikes.length;
   }
 
   _getTemplate() {
@@ -64,7 +75,9 @@ export default class Card {
     imageElement.alt = this._title;
     placeTitleElement.textContent = this._title;
     this._likeCounter.textContent = this._likes.length;
-
+    if (this._isLiked) {
+      this.setLike();
+    }
     return this._element;
   }
 }
