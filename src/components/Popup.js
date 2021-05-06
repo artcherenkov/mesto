@@ -14,6 +14,8 @@ export default class Popup {
     this._handleOutsideClick = this._handleOutsideClick.bind(this);
   }
 
+  setLoading(isLoading) {}
+
   setEventListeners() {
     this._closePopupBtn.addEventListener("click", this.close);
   }

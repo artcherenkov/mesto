@@ -47,6 +47,10 @@ const addPlaceValidator = new FormValidator(
 );
 editProfileValidator.enableValidation();
 addPlaceValidator.enableValidation();
+//
+// const setLoading = (popup, isLoading) => {
+//   popup.setLoading();
+// };
 
 // Инициализация информации о пользователе
 let userInfo;
@@ -82,10 +86,15 @@ editProfilePopup.setEventListeners();
 
 // Инициализация попапа добавления места
 const onAddPlaceFormSubmit = (formData) => {
-  api.postCard(Adapter.adaptCardToServer(formData)).then((card) => {
-    const cardElement = createCard(Adapter.adaptCardToClient(card));
-    placesList.addItem(cardElement, "prepend");
-  });
+  addPlacePopup.setLoading(true);
+  api
+    .postCard(Adapter.adaptCardToServer(formData))
+    .then((card) => {
+      const cardElement = createCard(Adapter.adaptCardToClient(card));
+      placesList.addItem(cardElement, "prepend");
+    })
+    .catch((err) => console.log(err))
+    .finally(() => addPlacePopup.setLoading(false));
 };
 const onAddPlaceFormReset = () => {
   addPlaceValidator.resetValidationErrors();

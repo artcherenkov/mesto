@@ -10,12 +10,20 @@ export default class PopupWithSubmit extends Popup {
     this._handleSubmitCallback = null;
   }
 
+  setLoading() {
+    this._buttonElement.textContent = "Удаление...";
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
     this._buttonElement.addEventListener("click", (evt) => {
       evt.preventDefault();
-      this._handleSubmitCallback().then(() => this.close());
+      this.setLoading(true);
+      this._handleSubmitCallback()
+        .then(() => this.close())
+        .catch((err) => console.log(err))
+        .finally(() => this.setLoading(false));
     });
   }
 
