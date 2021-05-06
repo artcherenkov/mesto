@@ -1,3 +1,5 @@
+import Api from "../components/Api";
+import Adapter from "../components/Adapter";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -84,6 +86,7 @@ const addPlacePopup = new PopupWithForm(
 addPlacePopup.setEventListeners();
 
 // Инициализация списка карточек
+let placesList;
 const onCardClick = (data) => () => imagePopup.open(data);
 const createCard = (data) => {
   const card = new Card(data, cardTemplateSelector, onCardClick(data));
@@ -93,14 +96,17 @@ const cardRenderer = (item) => {
   const cardElement = createCard(item);
   placesList.addItem(cardElement, "prepend");
 };
-const placesList = new Section(
-  {
-    items: INITIAL_CARDS,
-    renderer: cardRenderer,
-  },
-  placesListSelector
-);
-placesList.renderItems();
+api.getInitialCards().then((cards) => {
+  const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
+  placesList = new Section(
+    {
+      items: adaptedCards,
+      renderer: cardRenderer,
+    },
+    placesListSelector
+  );
+  placesList.renderItems();
+});
 
 // Объявление обработчиков кнопок открытия попапов
 const onEditProfileButtonClick = () => {
