@@ -8,6 +8,7 @@ import tenerifeImage from "../images/photo-tenerife.jpg";
 export const imagePopupSelector = ".popup_type_fullscreen-image";
 export const editProfilePopupSelector = ".popup_action_edit-profile";
 export const addPlacePopupSelector = ".popup_action_add-place";
+export const submitDeletionSelector = ".popup_action_submit-deletion";
 
 export const editProfileFormElement = document.querySelector(
   ".popup__form[name=user-info]"

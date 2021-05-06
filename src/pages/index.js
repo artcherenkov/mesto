@@ -21,9 +21,11 @@ import {
   placesListSelector,
   profileInfoSelector,
   profileNameSelector,
+  submitDeletionSelector,
 } from "../utils/constants.js";
 
 import "./index.css";
+import PopupWithSubmit from "../components/PopupWithSubmit";
 
 // Инициализация API
 const api = new Api({
@@ -59,6 +61,10 @@ api.getUserInfo().then((data) => {
 // Инициализация попапа с изображением
 const imagePopup = new PopupWithImage(imagePopupSelector);
 imagePopup.setEventListeners();
+
+// Инициализация попапа с подтверждением удаления
+const submitPopup = new PopupWithSubmit(submitDeletionSelector);
+submitPopup.setEventListeners();
 
 // Инициализация попапа редактирования профиля
 const onEditProfileFormSubmit = (formData) => {
@@ -105,7 +111,10 @@ const onLikeClick = (data) => {
 };
 const onDeleteClick = (data) => {
   return function () {
-    api.deleteCard(data._id).then(() => this.removeCard());
+    submitPopup.open();
+    submitPopup.setSubmitAction(() => {
+      return api.deleteCard(data._id).then(() => this.removeCard());
+    });
   };
 };
 const createCard = (data) => {
