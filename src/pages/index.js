@@ -23,6 +23,15 @@ import {
 
 import "./index.css";
 
+// Инициализация API
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-23",
+  headers: {
+    authorization: "5a89c943-0743-4e83-b516-7727da7c758b",
+    "Content-Type": "application/json",
+  },
+});
+
 // Инициализация валидаторов
 const editProfileValidator = new FormValidator(
   VALIDATION_CONFIG,
