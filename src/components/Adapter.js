@@ -11,4 +11,17 @@ export default class Adapter {
 
     return clientCard;
   }
+
+  static adaptUserInfoToClient(serverUserInfo) {
+    const clientUserInfo = {
+      ...serverUserInfo,
+      id: serverUserInfo._id,
+      info: serverUserInfo.about,
+    };
+
+    delete clientUserInfo.about;
+    delete clientUserInfo._id;
+
+    return clientUserInfo;
+  }
 }

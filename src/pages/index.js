@@ -47,9 +47,13 @@ editProfileValidator.enableValidation();
 addPlaceValidator.enableValidation();
 
 // Инициализация информации о пользователе
-const userInfo = new UserInfo({
-  nameSelector: profileNameSelector,
-  infoSelector: profileInfoSelector,
+let userInfo;
+api.getUserInfo().then((data) => {
+  userInfo = new UserInfo({
+    data: Adapter.adaptUserInfoToClient(data),
+    nameSelector: profileNameSelector,
+    infoSelector: profileInfoSelector,
+  });
 });
 
 // Инициализация попапа с изображением

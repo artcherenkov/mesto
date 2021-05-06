@@ -3,6 +3,18 @@ export default class Api {
     this._options = options;
   }
 
+  getUserInfo() {
+    return fetch(`${this._options.baseUrl}/users/me`, {
+      headers: this._options.headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: this._options.headers,
