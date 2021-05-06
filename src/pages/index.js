@@ -89,7 +89,19 @@ addPlacePopup.setEventListeners();
 let placesList;
 const onCardClick = (data) => () => imagePopup.open(data);
 const createCard = (data) => {
-  const card = new Card(data, cardTemplateSelector, onCardClick(data));
+  const card = new Card(
+    {
+      data,
+      handleCardClick: onCardClick(data),
+      handleLikeClick: () => {
+        console.log("like clicked");
+      },
+      handleDeleteClick: () => {
+        console.log("delete clicked");
+      },
+    },
+    cardTemplateSelector
+  );
   return card.createCard();
 };
 const cardRenderer = (item) => {
