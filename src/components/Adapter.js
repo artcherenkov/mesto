@@ -12,6 +12,10 @@ export default class Adapter {
     return clientCard;
   }
 
+  static adaptCardToServer(clientCard) {
+    return { name: clientCard.title, link: clientCard.imageUrl };
+  }
+
   static adaptUserInfoToClient(serverUserInfo) {
     const clientUserInfo = {
       ...serverUserInfo,

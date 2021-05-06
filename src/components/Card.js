@@ -1,13 +1,22 @@
 export default class Card {
   constructor(
-    { data, isLiked, handleCardClick, handleDeleteClick, handleLikeClick },
+    {
+      data,
+      isLiked,
+      isMine,
+      handleCardClick,
+      handleDeleteClick,
+      handleLikeClick,
+    },
     templateSelector
   ) {
     const { title, imageUrl, likes } = data;
     this._title = title;
     this._imageUrl = imageUrl;
     this._likes = likes;
+
     this._isLiked = isLiked;
+    this._isMine = isMine;
 
     this._templateSelector = templateSelector;
 
@@ -52,6 +61,10 @@ export default class Card {
     this._likeCounter.textContent = newLikes.length;
   }
 
+  removeCard() {
+    this._onCardDeletion();
+  }
+
   _getTemplate() {
     return document
       .querySelector(this._templateSelector)
@@ -78,6 +91,10 @@ export default class Card {
     if (this._isLiked) {
       this.setLike();
     }
+    if (!this._isMine) {
+      this._deleteBtn.classList.add("place__delete-button_hidden");
+    }
+
     return this._element;
   }
 }

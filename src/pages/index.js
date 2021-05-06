@@ -76,8 +76,10 @@ editProfilePopup.setEventListeners();
 
 // Инициализация попапа добавления места
 const onAddPlaceFormSubmit = (formData) => {
-  const cardElement = createCard(formData);
-  placesList.addItem(cardElement, "prepend");
+  api.postCard(Adapter.adaptCardToServer(formData)).then((card) => {
+    const cardElement = createCard(Adapter.adaptCardToClient(card));
+    placesList.addItem(cardElement, "prepend");
+  });
 };
 const onAddPlaceFormReset = () => {
   addPlaceValidator.resetValidationErrors();
@@ -101,6 +103,11 @@ const onLikeClick = (data) => {
     }
   };
 };
+const onDeleteClick = (data) => {
+  return function () {
+    api.deleteCard(data._id).then(() => this.removeCard());
+  };
+};
 const createCard = (data) => {
   const card = new Card(
     {
@@ -108,11 +115,10 @@ const createCard = (data) => {
       isLiked: data.likes.some(
         (like) => like._id === userInfo.getUserInfo().id
       ),
+      isMine: data.owner._id === userInfo.getUserInfo().id,
       handleCardClick: onCardClick(data),
       handleLikeClick: onLikeClick(data),
-      handleDeleteClick: () => {
-        console.log("delete clicked");
-      },
+      handleDeleteClick: onDeleteClick(data),
     },
     cardTemplateSelector
   );
@@ -120,7 +126,7 @@ const createCard = (data) => {
 };
 const cardRenderer = (item) => {
   const cardElement = createCard(item);
-  placesList.addItem(cardElement, "prepend");
+  placesList.addItem(cardElement, "append");
 };
 api.getInitialCards().then((cards) => {
   const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
