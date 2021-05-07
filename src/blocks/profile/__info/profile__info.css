@@ -5,9 +5,3 @@
   row-gap: 7px;
   column-gap: 10px;
 }
-
-@media screen and (max-width: 550px) {
-  .profile__avatar {
-    max-width: 300px;
-  }
-}
