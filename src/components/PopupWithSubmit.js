@@ -10,8 +10,12 @@ export default class PopupWithSubmit extends Popup {
     this._handleSubmitCallback = null;
   }
 
-  setLoading() {
-    this._buttonElement.textContent = "Удаление...";
+  setLoading(isLoading) {
+    if (isLoading) {
+      this._buttonElement.textContent = "Удаление...";
+    } else {
+      this._buttonElement.textContent = "Да";
+    }
   }
 
   setEventListeners() {

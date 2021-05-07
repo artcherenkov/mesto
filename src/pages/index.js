@@ -96,6 +96,7 @@ const onAddPlaceFormSubmit = (formData) => {
     .then((card) => {
       const cardElement = createCard(Adapter.adaptCardToClient(card));
       placesList.addItem(cardElement, "prepend");
+      addPlacePopup.close();
     })
     .catch((err) => console.log(err))
     .finally(() => addPlacePopup.setLoading(false));
