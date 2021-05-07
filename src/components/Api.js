@@ -29,6 +29,20 @@ export default class Api {
     });
   }
 
+  changeAvatar(avatarUrl) {
+    return fetch(`${this._options.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._options.headers,
+      body: JSON.stringify({ avatar: avatarUrl }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: this._options.headers,

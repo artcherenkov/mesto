@@ -115,6 +115,29 @@
           <button class="popup__form-submit popup__form-submit_action_deletion button">Да</button>
         </div>
       </div>
+      <div class="popup popup_action_change-avatar main__popup">
+        <div class="popup__container">
+          <button class="popup__close-button button" type="button" aria-label="Закрыть редактирование аватара"></button>
+          <h2 class="popup__title">
+            Обновить аватар
+          </h2>
+          <form class="popup__form" name="avatar">
+            <div class="popup__input-container">
+              <label class="popup__form-label" for="avatarUrl">Ваше имя</label>
+              <input
+                class="popup__form-input"
+                type="url"
+                name="avatarUrl"
+                id="avatarUrl"
+                placeholder="Ссылка на изображение"
+                required
+              >
+              <span class="popup__error avatarUrl-error"></span>
+            </div>
+            <button class="popup__form-submit button button_action_save" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
       <div class="popup popup_type_fullscreen-image popup_action_add-place main__popup">
         <figure class="popup__image-container">
           <button class="popup__close-button button" type="button" aria-label="Закрыть добавление карточки"></button>

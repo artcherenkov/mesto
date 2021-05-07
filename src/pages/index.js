@@ -7,7 +7,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-  INITIAL_CARDS,
   VALIDATION_CONFIG,
   addPlaceButtonElement,
   addPlaceFormElement,
@@ -22,6 +21,10 @@ import {
   profileInfoSelector,
   profileNameSelector,
   submitDeletionSelector,
+  changeAvatarPopupSelector,
+  changeAvatarButtonElement,
+  changeAvatarFormElement,
+  profileAvatarSelector,
 } from "../utils/constants.js";
 
 import "./index.css";
@@ -45,8 +48,13 @@ const addPlaceValidator = new FormValidator(
   VALIDATION_CONFIG,
   addPlaceFormElement
 );
+const changeAvatarValidator = new FormValidator(
+  VALIDATION_CONFIG,
+  changeAvatarFormElement
+);
 editProfileValidator.enableValidation();
 addPlaceValidator.enableValidation();
+changeAvatarValidator.enableValidation();
 
 // Инициализация информации о пользователе
 let userInfo;
@@ -55,6 +63,7 @@ api.getUserInfo().then((data) => {
     data: Adapter.adaptUserInfoToClient(data),
     nameSelector: profileNameSelector,
     infoSelector: profileInfoSelector,
+    avatarSelector: profileAvatarSelector,
   });
 });
 
@@ -110,6 +119,28 @@ const addPlacePopup = new PopupWithForm(
   onAddPlaceFormReset
 );
 addPlacePopup.setEventListeners();
+
+// Инициализация попапа изменения аватара
+const onChangeAvatarSubmit = (formData) => {
+  changeAvatarPopup.setLoading(true);
+  api
+    .changeAvatar(formData.avatarUrl)
+    .then((res) => {
+      userInfo.setUserInfo(Adapter.adaptUserInfoToClient(res));
+      changeAvatarPopup.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => changeAvatarPopup.setLoading(false));
+};
+const onChangeAvatarReset = () => {
+  changeAvatarValidator.resetValidationErrors();
+};
+const changeAvatarPopup = new PopupWithForm(
+  changeAvatarPopupSelector,
+  onChangeAvatarSubmit,
+  onChangeAvatarReset
+);
+changeAvatarPopup.setEventListeners();
 
 // Инициализация списка карточек
 let placesList;
@@ -174,7 +205,11 @@ const onEditProfileButtonClick = () => {
 const onAddPlaceButtonClick = () => {
   addPlacePopup.open();
 };
+const onChangeAvatarClick = () => {
+  changeAvatarPopup.open();
+};
 
 // Навешивание обработчиков кнопкам
 editProfileButtonElement.addEventListener("click", onEditProfileButtonClick);
 addPlaceButtonElement.addEventListener("click", onAddPlaceButtonClick);
+changeAvatarButtonElement.addEventListener("click", onChangeAvatarClick);
