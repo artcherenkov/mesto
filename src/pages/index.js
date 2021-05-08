@@ -56,20 +56,6 @@ editProfileValidator.enableValidation();
 addPlaceValidator.enableValidation();
 changeAvatarValidator.enableValidation();
 
-// Инициализация информации о пользователе
-let userInfo;
-api
-  .getUserInfo()
-  .then((data) => {
-    userInfo = new UserInfo({
-      data: Adapter.adaptUserInfoToClient(data),
-      nameSelector: profileNameSelector,
-      infoSelector: profileInfoSelector,
-      avatarSelector: profileAvatarSelector,
-    });
-  })
-  .catch((err) => console.log(err));
-
 // Инициализация попапа с изображением
 const imagePopup = new PopupWithImage(imagePopupSelector);
 imagePopup.setEventListeners();
@@ -107,7 +93,7 @@ const onAddPlaceFormSubmit = (formData) => {
     .postCard(Adapter.adaptCardToServer(formData))
     .then((card) => {
       const cardElement = createCard(Adapter.adaptCardToClient(card));
-      placesList.addItem(cardElement, "prepend");
+      cardsList.addItem(cardElement, "prepend");
       addPlacePopup.close();
     })
     .catch((err) => console.log(err))
@@ -145,8 +131,9 @@ const changeAvatarPopup = new PopupWithForm(
 );
 changeAvatarPopup.setEventListeners();
 
-// Инициализация списка карточек
-let placesList;
+// Инициализация списка карточек и информации о пользователе
+let cardsList;
+let userInfo;
 const onCardClick = (data) => () => imagePopup.open(data);
 const onLikeClick = (data) => {
   return function (isLiked) {
@@ -192,20 +179,37 @@ const createCard = (data) => {
 };
 const cardRenderer = (item) => {
   const cardElement = createCard(item);
-  placesList.addItem(cardElement, "append");
+  cardsList.addItem(cardElement, "append");
 };
-api
-  .getInitialCards()
-  .then((cards) => {
-    const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
-    placesList = new Section(
-      {
-        items: adaptedCards,
-        renderer: cardRenderer,
-      },
-      placesListSelector
-    );
-    placesList.renderItems();
+
+const initCardsList = (cards) => {
+  const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
+  cardsList = new Section(
+    {
+      items: adaptedCards,
+      renderer: cardRenderer,
+    },
+    placesListSelector
+  );
+
+  return cardsList;
+};
+const initUserInfo = (user) => {
+  userInfo = new UserInfo({
+    data: Adapter.adaptUserInfoToClient(user),
+    nameSelector: profileNameSelector,
+    infoSelector: profileInfoSelector,
+    avatarSelector: profileAvatarSelector,
+  });
+
+  return userInfo;
+};
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([cards, user]) => {
+    userInfo = initUserInfo(user);
+    cardsList = initCardsList(cards);
+    cardsList.renderItems();
   })
   .catch((err) => console.log(err));
 

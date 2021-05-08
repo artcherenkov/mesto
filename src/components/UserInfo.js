@@ -1,7 +1,6 @@
 export default class UserInfo {
   constructor({ data, nameSelector, infoSelector, avatarSelector }) {
     const { name, info, id, avatar } = data;
-    console.log(data);
     this._name = name;
     this._info = info;
     this._id = id;
