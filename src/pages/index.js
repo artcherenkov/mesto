@@ -58,14 +58,17 @@ changeAvatarValidator.enableValidation();
 
 // Инициализация информации о пользователе
 let userInfo;
-api.getUserInfo().then((data) => {
-  userInfo = new UserInfo({
-    data: Adapter.adaptUserInfoToClient(data),
-    nameSelector: profileNameSelector,
-    infoSelector: profileInfoSelector,
-    avatarSelector: profileAvatarSelector,
-  });
-});
+api
+  .getUserInfo()
+  .then((data) => {
+    userInfo = new UserInfo({
+      data: Adapter.adaptUserInfoToClient(data),
+      nameSelector: profileNameSelector,
+      infoSelector: profileInfoSelector,
+      avatarSelector: profileAvatarSelector,
+    });
+  })
+  .catch((err) => console.log(err));
 
 // Инициализация попапа с изображением
 const imagePopup = new PopupWithImage(imagePopupSelector);
@@ -148,9 +151,15 @@ const onCardClick = (data) => () => imagePopup.open(data);
 const onLikeClick = (data) => {
   return function (isLiked) {
     if (!isLiked) {
-      api.setLike(data._id).then((data) => this.setLike(data.likes));
+      api
+        .setLike(data._id)
+        .then((data) => this.setLike(data.likes))
+        .catch((err) => console.log(err));
     } else {
-      api.deleteLike(data._id).then((data) => this.deleteLike(data.likes));
+      api
+        .deleteLike(data._id)
+        .then((data) => this.deleteLike(data.likes))
+        .catch((err) => console.log(err));
     }
   };
 };
@@ -158,7 +167,10 @@ const onDeleteClick = (data) => {
   return function () {
     submitPopup.open();
     submitPopup.setSubmitAction(() => {
-      return api.deleteCard(data._id).then(() => this.removeCard());
+      return api
+        .deleteCard(data._id)
+        .then(() => this.removeCard())
+        .catch((err) => console.log(err));
     });
   };
 };
@@ -182,17 +194,20 @@ const cardRenderer = (item) => {
   const cardElement = createCard(item);
   placesList.addItem(cardElement, "append");
 };
-api.getInitialCards().then((cards) => {
-  const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
-  placesList = new Section(
-    {
-      items: adaptedCards,
-      renderer: cardRenderer,
-    },
-    placesListSelector
-  );
-  placesList.renderItems();
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    const adaptedCards = cards.map((card) => Adapter.adaptCardToClient(card));
+    placesList = new Section(
+      {
+        items: adaptedCards,
+        renderer: cardRenderer,
+      },
+      placesListSelector
+    );
+    placesList.renderItems();
+  })
+  .catch((err) => console.log(err));
 
 // Объявление обработчиков кнопок открытия попапов
 const onEditProfileButtonClick = () => {
